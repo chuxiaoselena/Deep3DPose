@@ -6,18 +6,18 @@ clc
 %%
 % path
 
-cd parse;
-compile;
-cd ..
+% cd parse;
+% compile;
+% cd ..
 
-addpath('parse\');
+addpath('./parse');
 
 %%
 % folder
 
-datafolder = '..\data';
+datafolder = '../data';
 
-folder = [ datafolder '\asfamc'];
+folder = [ datafolder '/asfamc'];
 
 % each subfolder contain an asf and several amcs
 subfolders = dir(folder);
@@ -43,25 +43,25 @@ for i = 1:size(subfolders, 1)
         continue
     end
     
-    asffolder = [ folder '\' subfolders(i).name];
+    asffolder = [ folder '/' subfolders(i).name];
     
-    asffile = dir([ asffolder '\' '*.asf']);
-    asfpath = [asffolder '\' asffile(1).name];
+    asffile = dir([ asffolder '/' '*.asf']);
+    asfpath = [asffolder '/' asffile(1).name];
     
     if size(asffile, 1) ~= 1
         disp('more than one asf file, error!');
         continue;
     end
     
-    amcfiles = dir([ asffolder '\' '*.amc']);
+    amcfiles = dir([ asffolder '/' '*.amc']);
     
     %%
     for j = 1:size(amcfiles)
         
         disp([i, j]);
         
-        amcpath = [asffolder '\' amcfiles(j).name];
-        cmd = ['converter\converter.exe ' asfpath ' ' amcpath];
+        amcpath = [asffolder '/' amcfiles(j).name];
+        cmd = ['converter/converter.exe ' asfpath ' ' amcpath];
         system(cmd);
         
         a = parse();

@@ -5,7 +5,7 @@ clc
 
 %%
 %scape
-
+addpath 'io';
 % male£¡
 addpath(genpath('../prepare/scape/MATLAB_daz_m_srf'));
 

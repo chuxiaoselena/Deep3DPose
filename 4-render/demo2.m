@@ -3,14 +3,15 @@
 clear
 clc
 
-slash = '\';
-abstractpath = 'D:\zcode\github\Deep3DPose-1-skel';
-
+slash = '/';
+abstractpath = '.';
+% abstractpath = 'D:\zcode\github\Deep3DPose-1-skel';
 %%
 % global variable
 
 % Blender path
-g_blender_path = 'D:\zcode\github\blender-2.76b-windows64\blender';
+% g_blender_path = 'D:\zcode\github\blender-2.76b-windows64\blender';
+g_blender_path = '/Users/chuxiao/Downloads/blender-2.78b-OSX_10.6-x86_64/blender.app';
 
 % Render meta data
 g_model_obj_filelists_folder = '.';
@@ -75,7 +76,7 @@ for i = 1:modelnum
     modelId = strsp{1};
     
     objFile = strsp{2};
-    objFile = strrep(objFile, '/', '\');
+%     objFile = strrep(objFile, '/', '\');
     
     renderFolder = [renderRootFolder slash modelId];
     if ~exist(renderFolder, 'dir')
@@ -116,6 +117,8 @@ end
 cmdnum = size(commands, 2);
 tic
 for i = 1:cmdnum
+%     appinfo = matlab.apputil.install(appfile);
+%     matlab.apputil.run(commands{i})
     system(commands{i});
 end
 toc
